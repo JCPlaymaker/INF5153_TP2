@@ -1,9 +1,7 @@
 package com.example.INF5153_TP2;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
@@ -33,6 +31,19 @@ public class LogementController {
     public Logement logement(@PathVariable int id) {
         Logement logement = db.get(id);
         if (logement == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return logement;
+    }
+
+    @DeleteMapping("/logement/{id}")
+    public void delete(@PathVariable int id) {
+        Logement logement = db.remove(id);
+        if (logement == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/logement")
+    public Logement create(@RequestBody Logement logement) {
+        logement.setId(10); //example
+        db.put(logement.getId(), logement);
         return logement;
     }
 }
