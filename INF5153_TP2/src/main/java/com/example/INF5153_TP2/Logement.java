@@ -17,6 +17,12 @@ public class Logement {
     public Logement() {
     }
 
+    //Constructeur pour tester des donnees
+    public Logement(String description, int id) {
+        this.description = description;
+        this.id = id;
+    }
+
     public Logement(String description, int id, int salles_bain,
                     int meubles_inclus, long prix, long taille,
                     boolean chauffage, boolean electrosmenagers,
@@ -31,12 +37,6 @@ public class Logement {
         this.electrosmenagers = electrosmenagers;
         this.wifi = wifi;
         this.air_clim = air_clim;
-    }
-
-    //Constructeur pour tester des donnees
-    public Logement(String description, int id) {
-        this.description = description;
-        this.id = id;
     }
 
     public int getId() {
