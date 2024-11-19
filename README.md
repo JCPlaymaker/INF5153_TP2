@@ -1,4 +1,4 @@
-Here is some code examples to test certain HTTPRequests
+Here is some code examples to test certain HTTPRequests\n
 To delete a single element:
 ```
 (async function deleteLogement(id) {
