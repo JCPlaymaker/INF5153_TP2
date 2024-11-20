@@ -1,7 +1,15 @@
 package com.example.INF5153_TP2;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+import jakarta.validation.constraints.NotEmpty;
+
+@Table("logement")
 public class Logement {
+    @NotEmpty
     private String description;
+
+    @Id
     private int id;
     private int salles_bain;
     private int meubles_inclus;
@@ -10,7 +18,7 @@ public class Logement {
 
     private boolean chauffage;
 
-    private boolean electrosmenagers;
+    private boolean electromenagers;
     private boolean wifi;
     private boolean air_clim;
 
@@ -34,7 +42,7 @@ public class Logement {
         this.prix = prix;
         this.taille = taille;
         this.chauffage = chauffage;
-        this.electrosmenagers = electrosmenagers;
+        this.electromenagers = electrosmenagers;
         this.wifi = wifi;
         this.air_clim = air_clim;
     }
@@ -95,12 +103,12 @@ public class Logement {
         this.meubles_inclus = meubles_inclus;
     }
 
-    public boolean hasElectrosmenagers() {
-        return electrosmenagers;
+    public boolean hasElectromenagers() {
+        return electromenagers;
     }
 
-    public void setElectrosmenagers(boolean electrosmenagers) {
-        this.electrosmenagers = electrosmenagers;
+    public void setElectromenagers(boolean electromenagers) {
+        this.electromenagers = electromenagers;
     }
 
     public boolean hasWifi() {
