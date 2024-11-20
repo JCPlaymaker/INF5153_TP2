@@ -3,7 +3,8 @@ Ou bien sur le terminal faire les commandes suivantes
 1. Récupérer tous les logements (Utilise une requête GET pour récupérer tous les logements dans la base de données)  
 ``curl -X GET http://localhost:8080/logement``
 2. Ajouter un nouveau logement (Utilise une requête POST avec un corps JSON pour ajouter un nouveau logement)  
-```curl -X POST http://localhost:8080/logement \
+```
+curl -X POST http://localhost:8080/logement \
 -H "Content-Type: application/json" \
 -d '{
   "description": "Studio moderne",
