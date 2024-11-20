@@ -1,49 +1,41 @@
 package com.example.INF5153_TP2;
 
+import com.example.INF5153_TP2.repository.LogementRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
+@RequestMapping("/logement")
 public class LogementController {
 
-    private final Map<Integer, Logement> db = new HashMap<>() {{
-        put(1, new Logement("Petit condo 1 1/2", 1));
-        put(2, new Logement("Grand condo 5 1/2", 2));
-    }};
+    @Autowired
+    private LogementRepository logementRepository;
 
-    @GetMapping("/")
-    public List<String> hello() {
-        return List.of("Hello", "World");
+    @GetMapping
+    public List<Logement> getAllLogements() {
+        return logementRepository.findAll();
     }
 
-    @GetMapping("/logement")
-    public Collection<Logement> logement() {
-        return db.values();
+    @GetMapping("/{id}")
+    public Logement getLogementById(@PathVariable int id) {
+        return logementRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé"));
     }
 
-    @GetMapping("/logement/{id}")
-    public Logement logement(@PathVariable int id) {
-        Logement logement = db.get(id);
-        if (logement == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        return logement;
+    @PostMapping
+    public Logement createLogement(@RequestBody Logement logement) {
+        return logementRepository.save(logement);
     }
 
-    @DeleteMapping("/logement/{id}")
-    public void delete(@PathVariable int id) {
-        Logement logement = db.remove(id);
-        if (logement == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-    }
-
-    @PostMapping("/logement")
-    public Logement create(@RequestBody Logement logement) {
-        logement.setId(10); //example
-        db.put(logement.getId(), logement);
-        return logement;
+    @DeleteMapping("/{id}")
+    public void deleteLogement(@PathVariable int id) {
+        if (!logementRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
+        }
+        logementRepository.deleteById(id);
     }
 }

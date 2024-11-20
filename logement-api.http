@@ -1,0 +1,24 @@
+### Récupérer tous les logements
+GET http://localhost:8080/logement
+
+### Ajouter un nouveau logement
+POST http://localhost:8080/logement
+Content-Type: application/json
+
+{
+  "description": "Studio moderne",
+  "salles_bain": 1,
+  "meubles_inclus": 1,
+  "prix": 900,
+  "taille": 40,
+  "chauffage": true,
+  "electromenagers": true,
+  "wifi": true,
+  "air_clim": false
+}
+
+### Récupérer un logement par ID
+GET http://localhost:8080/logement/1
+
+### Supprimer un logement
+DELETE http://localhost:8080/logement/1
