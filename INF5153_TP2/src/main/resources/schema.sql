@@ -1,6 +1,6 @@
 -- Drop the table if it exists to avoid conflicts
 DROP TABLE IF EXISTS logements;
-
+DROP TABLE IF EXISTS utilisateurs;
 -- Create the table again
 CREATE TABLE logements (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,5 +15,11 @@ CREATE TABLE logements (
        air_clim BOOLEAN
 );
 
+CREATE TABLE utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(32) NOT NULL,
+    email VARCHAR(32) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(16) NOT NULL
+);
 
 

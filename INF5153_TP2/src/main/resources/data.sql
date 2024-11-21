@@ -19,6 +19,18 @@ INSERT INTO logements (id, description, salles_bain, meubles_inclus, prix, taill
 VALUES
     (5, 'Condo 5 et ½ lumineux, non meublé', 2, 0, 1000.00, '2 et ½', FALSE, FALSE, TRUE, FALSE);
 
--- Reset the sequence
+INSERT INTO utilisateurs (nom, email, mot_de_passe)
+VALUES ('Jean Dupont', 'jean.dupont@example.com', 'motDePasse123');
+
+INSERT INTO utilisateurs (nom, email, mot_de_passe)
+VALUES ('Marie Curie', 'marie.curie@example.com', 'monSecret456');
+
+INSERT INTO utilisateurs (nom, email, mot_de_passe)
+VALUES ('Albert Einstein', 'albert.einstein@example.com', 'relativite789');
+
+-- Réinitialiser les séquences
+-- Utilisé pour régler le problème avec les requêtes POST
 ALTER TABLE logements ALTER COLUMN id RESTART WITH (SELECT MAX(id) + 1 FROM logements);
+ALTER TABLE utilisateurs ALTER COLUMN id RESTART WITH (SELECT MAX(id) + 1 FROM utilisateurs);
+
 

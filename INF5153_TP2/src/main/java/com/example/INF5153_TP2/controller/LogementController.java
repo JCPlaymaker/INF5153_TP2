@@ -1,5 +1,6 @@
-package com.example.INF5153_TP2;
+package com.example.INF5153_TP2.controller;
 
+import com.example.INF5153_TP2.Logement;
 import com.example.INF5153_TP2.repository.LogementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
