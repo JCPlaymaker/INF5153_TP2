@@ -18,3 +18,7 @@ VALUES
 INSERT INTO logements (id, description, salles_bain, meubles_inclus, prix, taille, chauffage, electromenagers, wifi, air_clim)
 VALUES
     (5, 'Condo 5 et ½ lumineux, non meublé', 2, 0, 1000.00, '2 et ½', FALSE, FALSE, TRUE, FALSE);
+
+-- Reset the sequence
+ALTER TABLE logements ALTER COLUMN id RESTART WITH (SELECT MAX(id) + 1 FROM logements);
+

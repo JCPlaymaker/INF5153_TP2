@@ -2,6 +2,7 @@
 GET http://localhost:8080/logement
 
 ### Ajouter un nouveau logement
+# @no-cookie-jar
 POST http://localhost:8080/logement
 Content-Type: application/json
 
@@ -9,8 +10,8 @@ Content-Type: application/json
   "description": "Studio moderne",
   "salles_bain": 1,
   "meubles_inclus": 1,
-  "prix": 900,
-  "taille": 40,
+  "prix": 900.00,
+  "taille": "2 et ½",
   "chauffage": true,
   "electromenagers": true,
   "wifi": true,
