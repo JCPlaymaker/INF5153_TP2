@@ -1,4 +1,4 @@
-Pour tester les différents types de requêtes, utiliser le fichier ``logement-api.http`` avec IntelliJ ou avec Postman  
+Pour tester les différents types de requêtes, utiliser les fichiers ``logement-api.http`` et ``utilisateurs-api.http`` avec IntelliJ ou avec Postman  
 Ou bien sur le terminal faire les commandes suivantes  
 1. Récupérer tous les logements (Utilise une requête GET pour récupérer tous les logements dans la base de données)  
 ``curl -X GET http://localhost:8080/logement``
@@ -22,3 +22,13 @@ curl -X POST http://localhost:8080/logement \
 ``curl -X GET http://localhost:8080/logement/1``
 4. Supprimer un logement (Pour supprimer un logement par ID, utilise une requête DELETE)  
 ``curl -X DELETE http://localhost:8080/logement/1``
+5. Créer un utilisateur (Utilise une requête POST avec un corps JSON pour ajouter un nouveau utilisateur)
+```
+curl -X POST http://localhost:8080/utilisateurs \
+-H "Content-Type: application/json" \
+-d '{
+    "nom": "Jean Dupont",
+    "email": "jean.dupont@example.com",
+    "motDePasse": "monMotDePasse"
+}'
+```
